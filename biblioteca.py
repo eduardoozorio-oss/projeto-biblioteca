@@ -20,3 +20,25 @@ def consultar_livro():
             print("Operação finalizada.\n")
 
 
+# ADICIONAR
+def adicionar_livro():
+    while True:
+        try:
+            id = int(input("ID do novo livro: "))
+
+            if id in biblioteca:
+                raise KeyError
+
+            titulo = input("Título: ")
+            autor = input("Autor: ")
+
+            biblioteca[id] = {"titulo": titulo, "autor": autor, "disponivel": True}
+            print("Livro adicionado!")
+            break
+
+        except KeyError:
+            print("Já existe um livro com esse ID.")
+        except ValueError:
+            print("ID precisa ser um número.")
+        finally:
+            print("Operação finalizada.\n")
