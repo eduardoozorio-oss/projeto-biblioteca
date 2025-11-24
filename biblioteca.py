@@ -43,7 +43,7 @@ def adicionar_livro():
         finally:
             print("Operação finalizada.\n")
 
-            
+
 # ATUALIZAR
 def atualizar_livro():
     while True:
@@ -66,6 +66,27 @@ def atualizar_livro():
 
         except KeyError:
             print("ID não encontrado.")
+        except ValueError:
+            print("Digite apenas números.")
+        finally:
+            print("Operação finalizada.\n")
+
+
+# DELETAR
+def deletar_livro():
+    while True:
+        try:
+            id = int(input("ID do livro que deseja deletar: "))
+
+            if id not in biblioteca:
+                raise KeyError
+
+            del biblioteca[id]
+            print("Livro deletado!")
+            break
+
+        except KeyError:
+            print("Esse ID não existe.")
         except ValueError:
             print("Digite apenas números.")
         finally:
