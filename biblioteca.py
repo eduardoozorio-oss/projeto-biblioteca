@@ -42,3 +42,31 @@ def adicionar_livro():
             print("ID precisa ser um número.")
         finally:
             print("Operação finalizada.\n")
+
+            
+# ATUALIZAR
+def atualizar_livro():
+    while True:
+        try:
+            id = int(input("ID do livro que deseja atualizar: "))
+
+            if id not in biblioteca:
+                raise KeyError
+
+            titulo = input("Novo título (ou Enter para manter): ")
+            autor = input("Novo autor (ou Enter para manter): ")
+
+            if titulo.strip():
+                biblioteca[id]["titulo"] = titulo
+            if autor.strip():
+                biblioteca[id]["autor"] = autor
+
+            print("Livro atualizado!")
+            break
+
+        except KeyError:
+            print("ID não encontrado.")
+        except ValueError:
+            print("Digite apenas números.")
+        finally:
+            print("Operação finalizada.\n")
